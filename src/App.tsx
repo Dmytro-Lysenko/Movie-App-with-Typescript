@@ -1,42 +1,21 @@
-import React, { useEffect, useState } from "react";
-import Movie from "./components/Movie";
-
-import useHttp from "./hooks/use-http";
-
-const bookUrl =
-  "https://react-app-81b61-default-rtdb.europe-west1.firebasedatabase.app/books.json";
-
-const movieUrl = "http://www.omdbapi.com/?i=tt3896198&apikey=461f08e0";
+import React, { Fragment } from "react";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/layout/Header";
+import HomePage from "./pages/HomePage";
+import WatchListPage from "./pages/WatchListPage";
+import { MovieContextProvider } from "./store/movie-context";
 
 function App() {
-  const [movie, setMovie] = useState<string[]>([]);
-
-  const { isLoading, error, sendRequest: fetchBook } = useHttp();
-
-  useEffect(() => {
-    const transFormData = (transformObject: any) => {
-      // console.log(transformObject);
-
-      // const loadedTasks: string[] = [];
-      // for (const taskKey in transformObject) {
-      //   const newBook = {
-      //     id: taskKey,
-      //     ...transformObject[taskKey],
-      //   };
-      //   loadedTasks.push(newBook);
-      // }
-
-      setMovie(transformObject);
-    };
-    fetchBook(movieUrl, transFormData);
-  }, [fetchBook]);
-
   return (
-    <React.Fragment>
-      <Movie movie={movie} />
-      <h1>hello</h1>
-      <button>Find</button>
-    </React.Fragment>
+    <MovieContextProvider>
+      <Fragment>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/watch-list" element={<WatchListPage />}></Route>
+        </Routes>
+      </Fragment>
+    </MovieContextProvider>
   );
 }
 
