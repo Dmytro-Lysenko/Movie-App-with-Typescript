@@ -11,8 +11,14 @@ function App() {
       <Fragment>
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/watch-list" element={<WatchListPage />}></Route>
+          <Route
+            path="/"
+            element={<HomePage />}
+          ></Route>
+          <Route
+            path="/watch-list"
+            element={<WatchListPage />}
+          ></Route>
         </Routes>
       </Fragment>
     </MovieContextProvider>
