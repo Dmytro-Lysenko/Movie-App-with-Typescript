@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/movie-app-with-typescript/static/css/main.2c5dd063.css",
+    "main.js": "/movie-app-with-typescript/static/js/main.d97197ab.js",
+    "index.html": "/movie-app-with-typescript/index.html",
+    "main.2c5dd063.css.map": "/movie-app-with-typescript/static/css/main.2c5dd063.css.map",
+    "main.d97197ab.js.map": "/movie-app-with-typescript/static/js/main.d97197ab.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c5dd063.css",
+    "static/js/main.d97197ab.js"
+  ]
+}
