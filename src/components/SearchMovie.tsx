@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import classes from './SearchMovie.module.css'
 
 const SearchMovie:React.FC<{onSearch:(text:string)=> void}> = (props) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -11,7 +12,7 @@ const SearchMovie:React.FC<{onSearch:(text:string)=> void}> = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <label htmlFor="text">Serch film by title</label>
       <input type="text" id="text" ref={inputRef} />
       <button>Search</button>

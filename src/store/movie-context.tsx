@@ -3,7 +3,8 @@ import { createContext, useState } from "react";
 const MovieContext = createContext({
   watchListMovies: [],
   addToWatchListMovie: (movie: object) => {},
-  deleteFromWatchListMovie: (id: string) => {},
+  deleteFromWatchListMovie: (title: string) => {},
+  isInWatchList: (title: string) => {},
 });
 
 export const MovieContextProvider: React.FC = (props) => {
@@ -14,20 +15,23 @@ export const MovieContextProvider: React.FC = (props) => {
     setWatchMovies((prevMovies) => {
       return [...prevMovies, movie];
     });
-    console.log(watchMovies);
   };
 
-  const deleteFromWatchListMovie = (id: string) => {
+  const deleteFromWatchListMovie = (title: string) => {
     setWatchMovies((prevMovies) => {
-      return prevMovies.filter((movie) => movie.id !== id);
+      return prevMovies.filter((movie) => movie.title !== title);
     });
-    console.log(watchMovies)
+  };
+
+  const isInWatchListHandler = (title: string) => {
+    return watchMovies.some((movie) => movie.title === title);
   };
 
   const context: any = {
     watchListMovies: watchMovies,
     addToWatchListMovie: addToWatchListHandler,
     deleteFromWatchListMovie: deleteFromWatchListMovie,
+    isInWatchList: isInWatchListHandler,
   };
 
   return (

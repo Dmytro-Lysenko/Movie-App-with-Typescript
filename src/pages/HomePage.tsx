@@ -9,8 +9,27 @@ const testData = {
   actors: "Jacob Richardson",
   poster:
     "https://m.media-amazon.com/images/M/MV5BMjA0OTAzODY2MF5BMl5BanBnXkFtZTcwNjA2NzMzMg@@._V1_SX300.jpg",
-  year: "2009",
+  year: "2012",
 };
+
+const testData1 = [
+  {
+    id: "20eeddsdfssaas2-01-24T19:22:01.588Z",
+    title: "Null",
+    actors: "Jacob Richardson",
+    poster:
+      "https://m.media-amazon.com/images/M/MV5BMjA0OTAzODY2MF5BMl5BanBnXkFtZTcwNjA2NzMzMg@@._V1_SX300.jpg",
+    year: "2009",
+  },
+  {
+    id: "202-01-24T19:22:01.588Z",
+    title: "REEED",
+    actors: "Jacob Richardson",
+    poster:
+      "https://m.media-amazon.com/images/M/MV5BMjA0OTAzODY2MF5BMl5BanBnXkFtZTcwNjA2NzMzMg@@._V1_SX300.jpg",
+    year: "2020",
+  },
+];
 
 const HomePage = () => {
   const [movie, setMovie] = useState<any>({});
@@ -21,7 +40,7 @@ const HomePage = () => {
     "https://react-app-81b61-default-rtdb.europe-west1.firebasedatabase.app/books.json";
 
   useEffect(() => {
-    const bookUrl = `http://www.omdbapi.com/?t=${movieTitle}&apikey=461f08e0`;
+    const movieUrl = `http://www.omdbapi.com/?t=${movieTitle}&apikey=461f08e0`;
     const transFormData = (transformObject: any) => {
       const updatedObject = {
         id: new Date().toISOString(),
@@ -39,9 +58,9 @@ const HomePage = () => {
       //   loadedTasks.push(newBook);
       // }
 
-      setMovie(testData);
+      setMovie(updatedObject);
     };
-    fetchBook(bookUrl, transFormData);
+    fetchBook(movieUrl, transFormData);
   }, [fetchBook, movieTitle]);
 
   const searchHandler = (enteredFilm: string) => {
